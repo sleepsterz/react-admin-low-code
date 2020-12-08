@@ -12,7 +12,8 @@ import {
     Tab,
     ReferenceManyField,
     TopToolbar,
-    ListButton
+    ListButton,
+    ReferenceField
 } from 'react-admin';
 
 const CustomerFilter = (props: object) => (
@@ -25,8 +26,11 @@ export const CustomerList = (props: object) => (
     <List filters={<CustomerFilter />} bulkActionButtons={false} {...props}>
         <Datagrid rowClick="show">
             <TextField source="id" />
-            <TextField source="displayName" label="Display Name" />
-            <TextField source="companyName" label="Company Name" />
+            <TextField source="displayName" />
+            <TextField source="companyName" />
+            <ReferenceField source="parentCompany" reference="customers">
+                <TextField source="displayName" />
+            </ReferenceField>
         </Datagrid>
     </List>
 );
@@ -46,8 +50,8 @@ export const CustomerShow = (props: object) => (
         <TabbedShowLayout>
             <Tab label="summary">
             <TextField source="id" />
-            <TextField source="displayName" label="Display Name" />
-            <TextField source="companyName" label="Company Name" />
+            <TextField source="displayName" />
+            <TextField source="companyName" />
             </Tab>
         </TabbedShowLayout>
     </Show>
