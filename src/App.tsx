@@ -3,6 +3,7 @@ import React from 'react';
 import { Admin, Resource } from 'react-admin';
 import { TodoList, TodoEdit, TodoCreate } from './todos';
 import { UserList, UserShow } from './users';
+import { CustomerList, CustomerShow } from './customers';
 import PostIcon from '@material-ui/icons/Book';
 import UserIcon from '@material-ui/icons/Group';
 
@@ -16,6 +17,12 @@ function App(props: AppProps) {
         <Admin
             dataProvider={props.dataProvider}
         >
+            <Resource
+                name="customers"
+                icon={UserIcon}
+                list={CustomerList}
+                show={CustomerShow}
+            />
             <Resource
                 name="todos"
                 icon={PostIcon}
